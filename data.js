@@ -1,1 +1,25 @@
-module.exports = {mongoLink:'mongodb+srv://radical:vishu@radical.bvk17.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',//database linkbot_token:'5146627550:AAFmkxteswgBO8gUvWlzrySNInvwjekHOJo',bot_name:'Tomo_autopaybot',//bot username without @bot_admin:1811781327,channelsList : ['clickgonews'],channelscheck : ['@clickgonews'],airdropName : 'Digital Airdrop Co.',reffer_bonus:300,// ral bonus amountmin_wd:10,//min withdrawal amountcurrency:'rdt', //bot cuurencypayment_channel:'@clickgonews'// payment channel username}
+module.exports = {
+
+mongoLink:'mongodb+srv://tgbot:puskal123400"@serverlessinstance0.ekbq7sx.mongodb.net/?retryWrites=true&w=majority&appName=ServerlessInstance0',//database link
+
+bot_token:'5931443092:AAHDndMywVinQF4gOusCKFstS8huJkPIX6I',
+
+bot_name:'Airdrop_Hunters4',//bot username without @
+
+bot_admin:2056940619,
+
+channelsList : ['Airdrop_Hunters4'],
+
+channelscheck : ['@Airdrop_Hunters4'],
+
+airdropName : 'PolyGon Matic (MATIC) Airdrop',
+
+reffer_bonus:30000,// ral bonus amount
+
+min_wd:1000000,//min withdrawal amount
+
+currency:'celo', //bot cuurency
+
+payment_channel:'@Airdrop_Hunters4'// payment channel username
+
+}
