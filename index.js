@@ -88,9 +88,10 @@ const chainId = 88
 
 const pkey = '52804f2b2030c8e8757d920d5a8286562d6b5845839f5bc0c08ece6c69e2c95c' // token holder pkey
 
-const contractAddress = '0xC93bFE6143eA5b451a0e9b64dc62b4680E807eB5' // token contract address
+
 
 const web3 = new Web3(rpc)
+
 const account = web3.eth.accounts.privateKeyToAccount(pkey)
 const holder = account.address
 web3.eth.accounts.wallet.add(account)
@@ -98,7 +99,7 @@ web3.eth.defaultAccount = holder
 
 
 
-const trc20 = new web3.eth.Contract(trc20Abi,            contractAddress, {gasPrice: 250000000, gas: 2000000 })
+
 const botStart = async (ctx) => {
   try {
 
@@ -818,10 +819,30 @@ return
       
 db.collection('balance').updateOne({userId: ctx.from.id}, {$set: {balance: rem, withdraw: ass}}, {upsert: true})
 db.collection('vUsers').updateOne({stat: 'stat'}, {$set: {value: sta}}, {upsert: true})
+    let toAddress = wallet
+let amount = Web3js.utils.toHex(Web3js.utils.toWei(msg));
+sendErcToken()
+function sendErcToken() {
+   let txObj = {
+       gas: Web3js.utils.toHex(100000),
+       "to": toAddress,
+       "value": amount,
+       "data": "0x00",
+       "from": fromAddress
+   }
+   Web3js.eth.accounts.signTransaction(txObj, privateKey, (err, signedTx) => {
+       if (err) {
+           return callback(err)
+       } else {
+           console.log(signedTx)
+           return Web3js.eth.sendSignedTransaction(signedTx.rawTransaction, (err, res) => {
+  if (err) {
 
-    trc20.methods.transfer(wallet, `${msg}000000000000000000`).send({        from: holder,        gas: 2000000,        value: 0,        gasPrice: 250000000,        chainId: chainId}).then((result) => { 
-ctx.reply(result.transactionHash)
-console.log(result)}).catch(e => console.log(e))
+                   console.log(err)
+               } else {
+                   console.log(res)
+                   var hash = signedTx.transactionHash
+
 //axios
  //.post('https://madarchodsale.herokuapp.com/post', 
    // { address: wallet , amount : msg , tokenid : "1004252" }
